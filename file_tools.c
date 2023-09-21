@@ -2,7 +2,7 @@
 
 /**
  * open_file - opens a file
- * @file_name: the file namepath
+ * @file_name: the file path/name
  * Return: void
  */
 
@@ -19,12 +19,12 @@ void open_file(char *file_name)
 
 
 /**
- * read_file - reads a file
+ * rd_file - reads a file
  * @fd: pointer to file descriptor
  * Return: void
  */
 
-void read_file(FILE *fd)
+void rd_file(FILE *fd)
 {
 	int line_number, format = 0;
 	char *buffer = NULL;
@@ -39,16 +39,16 @@ void read_file(FILE *fd)
 
 
 /**
- * parse_line - Separates each line into tokens to determine
+ * sep_line - Separates each line into tokens to determine
  * which function to call
  * @buffer: line from the file
- * @line_number: line number
+ * @l_nbr: line number
  * @format:  storage format. If 0 Nodes will be entered as a stack.
  * if 1 nodes will be entered as a queue.
  * Return: Returns 0 if the opcode is stack. 1 if queue.
  */
 
-int parse_line(char *buffer, int line_number, int format)
+int sep_line(char *buffer, int line_number, int format)
 {
 	char *opcode, *value;
 	const char *delim = "\n ";
@@ -85,19 +85,19 @@ void find_func(char *opcode, char *value, int ln, int format)
 	int flag;
 
 	instruction_t func_list[] = {
-		{"push", add_to_stack},
+		{"push", add_stack},
 		{"pall", print_stack},
-		{"pint", print_top},
-		{"pop", pop_top},
+		{"pint", pint_op},
+		{"pop", pop_op},
 		{"nop", nop},
-		{"swap", swap_nodes},
-		{"add", add_nodes},
-		{"sub", sub_nodes},
-		{"div", div_nodes},
-		{"mul", mul_nodes},
-		{"mod", mod_nodes},
-		{"pchar", print_char},
-		{"pstr", print_str},
+		{"swap", swap_op},
+		{"add", add_op},
+		{"sub", sub_op},
+		{"div", div_op},
+		{"mul", mul_op},
+		{"mod", mod_op},
+		{"pchar", p_char},
+		{"pstr", p_str},
 		{"rotl", rotl},
 		{"rotr", rotr},
 		{NULL, NULL}
@@ -120,7 +120,7 @@ void find_func(char *opcode, char *value, int ln, int format)
 
 
 /**
- * call_fun - Calls the required function.
+ * call_func - Calls the required function.
  * @func: Pointer to the function that is about to be called.
  * @op: string representing the opcode.
  * @val: string representing a numeric value.
@@ -128,7 +128,7 @@ void find_func(char *opcode, char *value, int ln, int format)
  * @format: Format specifier. If 0 Nodes will be entered as a stack.
  * if 1 nodes will be entered as a queue.
  */
-void call_fun(op_func func, char *op, char *val, int ln, int format)
+void call_func(op_func func, char *op, char *val, int ln, int format)
 {
 	stack_t *node;
 	int flag;
