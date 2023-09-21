@@ -11,7 +11,7 @@
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
- * @i: integer
+ * @n: integer
  * @prev: points to the previous element of the stack (or queue)
  * @next: points to the next element of the stack (or queue)
  *
@@ -58,8 +58,8 @@ void add_to_queue(stack_t **, unsigned int);
 
 void call_fun(op_func, char *, char *, int, int);
 
-void pint_op(stack_t **, unsigned int);
-void pop_op(stack_t **, unsigned int);
+void print_top(stack_t **, unsigned int);
+void pop_top(stack_t **, unsigned int);
 void nop(stack_t **, unsigned int);
 void swap_nodes(stack_t **, unsigned int);
 
@@ -71,8 +71,8 @@ void mul_nodes(stack_t **, unsigned int);
 void mod_nodes(stack_t **, unsigned int);
 
 /*String operations*/
-void p_char(stack_t **, unsigned int);
-void p_str(stack_t **, unsigned int);
+void print_char(stack_t **, unsigned int);
+void print_str(stack_t **, unsigned int);
 void rotl(stack_t **, unsigned int);
 
 /*Error hanlding*/
