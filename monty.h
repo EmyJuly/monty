@@ -61,14 +61,14 @@ void call_fun(op_func, char *, char *, int, int);
 void pint_op(stack_t **, unsigned int);
 void pop_op(stack_t **, unsigned int);
 void nop(stack_t **, unsigned int);
-void swap_op(stack_t **, unsigned int);
+void swap_nodes(stack_t **, unsigned int);
 
 /*Math operations with nodes*/
-void add_op(stack_t **, unsigned int);
-void sub_op(stack_t **, unsigned int);
-void div_op(stack_t **, unsigned int);
-void mul_op(stack_t **, unsigned int);
-void mod_op(stack_t **, unsigned int);
+void add_nodes(stack_t **, unsigned int);
+void sub_nodes(stack_t **, unsigned int);
+void div_nodes(stack_t **, unsigned int);
+void mul_nodes(stack_t **, unsigned int);
+void mod_nodes(stack_t **, unsigned int);
 
 /*String operations*/
 void p_char(stack_t **, unsigned int);
