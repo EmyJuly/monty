@@ -1,4 +1,4 @@
-#include "monty.h"
+#include "MONTY.h"
 
 /**
  * err - Handles and prints appropriate error messages based on error codes.
@@ -47,38 +47,38 @@ void err(int error_code, ...)
 }
 
 /**
- * more_err - Handles additional errors and prints appropriate messages.
- * @error_code: The error codes and their meanings are as follows:
- * (6) => The stack is empty when trying to execute "pint".
- * (7) => The stack is empty when trying to execute "pop".
- * (8) => The stack is too short to perform the operation.
- * (9) => Division by zero. 
-*/
+ * more_err - handles errors.
+ * @error_code: The error codes are the following:
+ * (6) => When the stack it empty for pint.
+ * (7) => When the stack it empty for pop.
+ * (8) => When stack is too short for operation.
+ * (9) => Division by zero.
+ */
 void more_err(int error_code, ...)
 {
-	va_list args;
+	va_list ag;
 	char *op;
-	int line_number;
+	int l_num;
 
-	va_start(args, error_code);
+	va_start(ag, error_code);
 	switch (error_code)
 	{
 		case 6:
 			fprintf(stderr, "L%d: can't pint, stack empty\n",
-				va_arg(args, int));
+				va_arg(ag, int));
 			break;
 		case 7:
 			fprintf(stderr, "L%d: can't pop an empty stack\n",
-				va_arg(args, int));
+				va_arg(ag, int));
 			break;
 		case 8:
-			line_number = va_arg(args, unsigned int);
-			op = va_arg(args, char *);
-			fprintf(stderr, "L%d: can't %s, stack too short\n", line_number, op);
+			l_num = va_arg(ag, unsigned int);
+			op = va_arg(ag, char *);
+			fprintf(stderr, "L%d: can't %s, stack too short\n", l_num, op);
 			break;
 		case 9:
 			fprintf(stderr, "L%d: division by zero\n",
-				va_arg(args, unsigned int));
+				va_arg(ag, unsigned int));
 			break;
 		default:
 			break;
@@ -88,8 +88,8 @@ void more_err(int error_code, ...)
 }
 
 /**
- * strg_err - Handles string-related errors and prints appropriate messages.
- * @error_code: The error codes and their meanings are as follows:
+ * strg_err - handles errors.
+ * @error_code: The error codes are the following:
  * (10) ~> The number inside a node is outside ASCII bounds.
  * (11) ~> The stack is empty.
  */

@@ -1,4 +1,4 @@
-#include "monty.h"
+#include "MONTY.h"
 
 /**
  * mul_op - Adds the top two elements of the stack.

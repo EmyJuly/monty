@@ -1,4 +1,4 @@
-#include "monty.h"
+#include "MONTY.h"
 
 /**
  * open_file - opens a file
@@ -13,7 +13,7 @@ void open_file(char *file_name)
 	if (file_name == NULL || fd == NULL)
 		err(2, file_name);
 
-	read_file(fd);
+	rd_file(fd);
 	fclose(fd);
 }
 
@@ -32,7 +32,7 @@ void rd_file(FILE *fd)
 
 	for (line_number = 1; getline(&buffer, &len, fd) != -1; line_number++)
 	{
-		format = parse_line(buffer, line_number, format);
+		format = sep_line(buffer, line_number, format);
 	}
 	free(buffer);
 }
@@ -42,7 +42,7 @@ void rd_file(FILE *fd)
  * sep_line - Separates each line into tokens to determine
  * which function to call
  * @buffer: line from the file
- * @l_nbr: line number
+ * @line_number: line number
  * @format:  storage format. If 0 Nodes will be entered as a stack.
  * if 1 nodes will be entered as a queue.
  * Return: Returns 0 if the opcode is stack. 1 if queue.
@@ -110,7 +110,7 @@ void find_func(char *opcode, char *value, int ln, int format)
 	{
 		if (strcmp(opcode, func_list[i].opcode) == 0)
 		{
-			call_fun(func_list[i].f, opcode, value, ln, format);
+			call_func(func_list[i].f, opcode, value, ln, format);
 			flag = 0;
 		}
 	}

@@ -1,4 +1,4 @@
-#include "monty.h"
+#include "MONTY.h"
 stack_t *head = NULL;
 
 /**
